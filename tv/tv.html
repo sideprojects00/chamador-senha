@@ -11,7 +11,10 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Chamador de senha - TV</title>
     <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
@@ -27,42 +30,38 @@
     <main class="main-content">
       <div class="glass-container">
         <div class="field" id="recep">Recepção</div>
-        <div class="field" id="num">33</div>
-        <div class="field" id="tipo">Verde ( normal )</div>
+        <div class="field" id="num"></div>
+        <div class="field" id="tipo"></div>
       </div>
     </main>
 
     <script>
-      const socket = io('https://chamador-senha-server.onrender.com')
+      const socket = io('https://chamador-senha-server.onrender.com');
 
-      const countSpan = document.getElementById('count')
-      const incrementarBtn = document.getElementById('incrementarBtn')
-      const atualizarBtn = document.getElementById('atualizarBtn')
+      const numDiv = document.getElementById('num');
+      const tipoDiv = document.getElementById('tipo');
 
-      socket.on('atualizarCount', novoCount => {
-        countSpan.textContent = novoCount
-      })
+      function tocarBipe() {
+        const audio = new Audio('../assets/bip.mp3');
+        audio.play();
+      }
+      
 
-      incrementarBtn.addEventListener('click', () => {
-        socket.emit('incrementarCount')
-      })
+      socket.on('estadoAtualizado', ({ senhaAtual, tipoAtual }) => {
+        const letraTipo = tipoAtual.charAt(0).toUpperCase(); 
+        numDiv.textContent = `${senhaAtual}${letraTipo}`;  
+        tipoDiv.textContent = tipoAtual;                  
 
-      atualizarBtn.addEventListener('click', () => {
-        const dados = `Atualização enviada às ${new Date().toLocaleTimeString()}`
-        socket.emit('atualizar', dados)
-      })
+        tocarBipe();
+      });
 
       socket.on('connect', () => {
-        console.log('Conectado ao servidor!')
-      })
+        console.log('Conectado ao servidor!');
+      });
 
       socket.on('disconnect', () => {
-        console.log('Desconectado do servidor!')
-      })
-
-      socket.on('atualizacao', dados => {
-        console.log(`Atualização recebida: ${dados}`)
-      })
+        console.log('Desconectado do servidor!');
+      });
     </script>
   </body>
 </html>
