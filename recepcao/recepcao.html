@@ -11,6 +11,10 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Chamador de Senha - Recepção</title>
     <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
@@ -26,20 +30,20 @@
     </header>
 
     <main class="main-content">
-      <div class="box">
+      <div class="box" id="box1">
         <h2>Senha atual</h2>
-        <div id="current-num">1</div>
+        <div id="current-num" class="display-num">1</div>
         <div id="current-type">Normal</div>
         <button id="reset-btn">Reiniciar contadores</button>
       </div>
-      <div class="box">
+      <div class="box" id="box2">
         <h2>Próxima senha normal</h2>
-        <div id="next-normal-num">2</div>
+        <div id="next-normal-num" class="display-num">2</div>
         <button id="next-normal-btn">Chamar próxima</button>
       </div>
-      <div class="box">
+      <div class="box" id="box3">
         <h2>Próxima senha preferencial</h2>
-        <div id="next-preferential-num">2</div>
+        <div id="next-preferential-num" class="display-num">2</div>
         <button id="next-preferential-btn">Chamar próxima</button>
       </div>
     </main>

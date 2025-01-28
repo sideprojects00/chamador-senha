@@ -17,7 +17,7 @@ body {
   align-items: center;
   padding: 20px 50px;
   background-color: #000000;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .image {
@@ -32,7 +32,7 @@ body {
 }
 
 .text-area a {
-  color: #FFFFFF;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -59,6 +59,9 @@ body {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 16px;
+  font-size: 20px;
+  font-family: 'Merriweather Sans';
+  text-align: center;
 }
 
 button {
@@ -81,4 +84,46 @@ button {
 
 .button:hover {
   background-color: #303030;
+}
+
+#box1 {
+  color: rgb(255, 0, 0);
+}
+
+#box2 {
+  color: rgb(0, 162, 0);
+}
+
+#box3 {
+  color: rgb(210, 210, 0);;
+}
+
+.display-num {
+  font-size: 100px;
+  font-family: 'Merriweather Sans';
+}
+
+@media (max-width: 1500px) {
+  .header {
+    padding: 20px 10px;
+  }
+
+  .image {
+    height: 50px;
+    width: 50px;
+  }
+
+  .text-area h1 {
+    font-size: 25px;
+  }
+
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 250px;
+  }
+
+  .box {
+    width: 600px;
+  }
 }

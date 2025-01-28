@@ -87,7 +87,7 @@ body {
 }
 
 #num {
-  font-size: 130px;
+  font-size: 140px;
   color: rgb(0, 0, 0);
   font-family: "Merriweather Sans";
 }
@@ -95,4 +95,10 @@ body {
 #tipo {
   font-size: 35px;
   font-family: "Merriweather Sans";
+}
+
+@media (max-width: 900px) {
+  .glass-container {
+    width: 600px;
+  }
 }
