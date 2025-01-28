@@ -45,7 +45,7 @@ body {
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  width: 700px;
+  width: 800px;
   height: 500px;
   padding: 50px;
   border-radius: 16px;
@@ -77,17 +77,17 @@ body {
 }
 
 #recep {
-  font-size: 60px;
+  font-size: 35px;
   font-family: "Merriweather Sans";
 }
 
 #num {
-  font-size: 90px;
+  font-size: 130px;
   color: rgb(0, 0, 0);
   font-family: "Merriweather Sans";
 }
 
 #tipo {
-  font-size: 60px;
+  font-size: 35px;
   font-family: "Merriweather Sans";
 }
