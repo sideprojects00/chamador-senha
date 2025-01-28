@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="recepcaostyle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Laboratório - Recepção</title>
+    <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <img class="image" src="../assets/bandeira-alagoas.jpg" alt="" />
+      <div class="text-area">
+        <h1>Laboratório</h1>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <p>count: <span id="count">0</span></p>
+      <a class="button" href="tv/tv.html">TV</a>
+      <a id="incrementarBtn" class="button" href="#">Recepção</a>
+    </main>
+
+    <script>
+      const socket = io('https://sistema-chamar-senha-node.onrender.com');
+
+      const countSpan = document.getElementById('count');
+      const incrementarBtn = document.getElementById('incrementarBtn');
+      const atualizarBtn = document.getElementById('atualizarBtn');
+
+      socket.on('atualizarCount', (novoCount) => {
+        countSpan.textContent = novoCount;
+      });
+
+      incrementarBtn.addEventListener('click', () => {
+        socket.emit('incrementarCount');
+      });
+
+      atualizarBtn.addEventListener('click', () => {
+        const dados = `Atualização enviada às ${new Date().toLocaleTimeString()}`;
+        socket.emit('atualizar', dados);
+      });
+
+      socket.on('connect', () => {
+        console.log('Conectado ao servidor!');
+      });
+
+      socket.on('disconnect', () => {
+        console.log('Desconectado do servidor!');
+      });
+
+      socket.on('atualizacao', (dados) => {
+        console.log(`Atualização recebida: ${dados}`);
+      });
+    </script>
+  </body>
+</html>
