@@ -23,7 +23,9 @@
     <header class="header">
       <img class="image" src="../assets/logo.png" alt="" />
       <div class="text-area">
-        <h1>Chamador de Senha</h1>
+        <a href="../index.html">
+          <h1>Chamador de Senha</h1>
+        </a>
       </div>
     </header>
 
@@ -36,32 +38,31 @@
     </main>
 
     <script>
-      const socket = io('https://chamador-senha-server.onrender.com');
+      const socket = io('https://chamador-senha-server.onrender.com')
 
-      const numDiv = document.getElementById('num');
-      const tipoDiv = document.getElementById('tipo');
+      const numDiv = document.getElementById('num')
+      const tipoDiv = document.getElementById('tipo')
 
       function tocarBipe() {
-        const audio = new Audio('../assets/bip.mp3');
-        audio.play();
+        const audio = new Audio('../assets/bip.mp3')
+        audio.play()
       }
-      
 
       socket.on('estadoAtualizado', ({ senhaAtual, tipoAtual }) => {
-        const letraTipo = tipoAtual.charAt(0).toUpperCase(); 
-        numDiv.textContent = `${senhaAtual}${letraTipo}`;  
-        tipoDiv.textContent = tipoAtual;                  
+        const letraTipo = tipoAtual.charAt(0).toUpperCase()
+        numDiv.textContent = `${senhaAtual}${letraTipo}`
+        tipoDiv.textContent = tipoAtual
 
-        tocarBipe();
-      });
+        tocarBipe()
+      })
 
       socket.on('connect', () => {
-        console.log('Conectado ao servidor!');
-      });
+        console.log('Conectado ao servidor!')
+      })
 
       socket.on('disconnect', () => {
-        console.log('Desconectado do servidor!');
-      });
+        console.log('Desconectado do servidor!')
+      })
     </script>
   </body>
 </html>
