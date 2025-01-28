@@ -60,12 +60,12 @@
       )
 
       socket.on(
-        'atualizarDados',
-        ({ current, nextNormal, nextPreferential }) => {
-          currentNumEl.textContent = current.num
-          currentTypeEl.textContent = current.type
-          nextNormalNumEl.textContent = nextNormal
-          nextPreferentialNumEl.textContent = nextPreferential
+        'estadoAtualizado',
+        ({ senhaAtual, tipoAtual, filaNormal, filaPreferencial }) => {
+          currentNumEl.textContent = senhaAtual
+          currentTypeEl.textContent = tipoAtual
+          nextNormalNumEl.textContent = filaNormal
+          nextPreferentialNumEl.textContent = filaPreferencial
         }
       )
 
@@ -74,11 +74,11 @@
       })
 
       nextNormalBtn.addEventListener('click', () => {
-        socket.emit('chamarProxima', { type: 'Normal' })
+        socket.emit('chamarProximaNormal') 
       })
 
       nextPreferentialBtn.addEventListener('click', () => {
-        socket.emit('chamarProxima', { type: 'Preferencial' })
+        socket.emit('chamarProximaPreferencial') 
       })
 
       socket.on('connect', () => {
