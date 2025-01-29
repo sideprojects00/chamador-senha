@@ -43,11 +43,12 @@
         socket.emit('validarLogin', { username, password })
       })
 
-      socket.on('loginResult', isValid => {
-        if (isValid) {
-          window.location.href = 'recepcao/recepcao.html' 
+      socket.on('loginResult', result => {
+        if (result.success) {
+          localStorage.setItem('authToken', result.token)
+          window.location.href = 'recepcao/recepcao.html'
         } else {
-          errorMessage.style.display = 'block' 
+          errorMessage.style.display = 'block'
         }
       })
     </script>
