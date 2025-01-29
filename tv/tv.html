@@ -33,8 +33,6 @@
       </div>
     </main>
 
-    
-
     <script>
       const socket = io('https://chamador-senha-server.onrender.com')
 
@@ -67,7 +65,14 @@
           numDiv.textContent = `${senhaAtual}${letraTipo}`
           tipoDiv.textContent = tipoAtual
 
-          
+          historicoList.innerHTML = ''
+
+          historicoSenhas.forEach(({ senha, tipo }) => {
+            const li = document.createElement('li')
+            li.textContent = `${senha}${tipo.charAt(0).toUpperCase()}`
+            li.classList.add(tipo.toLowerCase())
+            historicoList.appendChild(li)
+          })
 
           tocarBipe()
         }
