@@ -49,6 +49,10 @@
     </main>
 
     <script>
+      if (!localStorage.getItem('loggedIn')) {
+        window.location.href = '../login.html'
+      }
+
       const socket = io('https://chamador-senha-server.onrender.com')
 
       const currentTittle = document.getElementById('current-tittle')
