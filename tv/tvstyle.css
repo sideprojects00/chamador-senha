@@ -122,6 +122,7 @@ body {
 
   .historico-container {
     height: 20%;
+    display: flex;
   }
 
   #historico-list {
