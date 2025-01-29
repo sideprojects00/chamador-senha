@@ -25,7 +25,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
   height: 100vh;
   width: 100vw;
 }
@@ -35,8 +34,8 @@ body {
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  width: 80%;
-  height: 100%;
+  width: 70%;
+  height: 80%;
   padding: 50px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.8);
@@ -88,18 +87,17 @@ body {
 }
 
 .historico-container {
-  height: 100%;
-  width: 20%;
+  height: 80%;
+  width: 10%;
   margin-top: 20px;
   padding: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  border-radius: 16px;
   text-align: center;
 }
 
 .historico-container h2 {
   margin-bottom: 10px;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
 }
 
