@@ -49,11 +49,16 @@
     </main>
 
     <script>
-      if (!localStorage.getItem('loggedIn')) {
-        window.location.href = '../login.html'
-      }
 
       const socket = io('https://chamador-senha-server.onrender.com')
+
+      socket.on('checkLoginStatus', (logged) => {
+        if (!logged) {
+          window.location.href = '/login.html'; 
+        }
+      });
+
+      socket.emit('checkLogin');
 
       const currentTittle = document.getElementById('current-tittle')
       const currentNumEl = document.getElementById('current-num')

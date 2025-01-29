@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
   </head>
   <body>
     <div class="login-container">
@@ -12,34 +13,36 @@
       <form id="loginForm">
         <input type="text" id="username" placeholder="Usuário" required />
         <input type="password" id="password" placeholder="Senha" required />
-        <button type="submit">Entrar</button>
+        <button id="submit-btn">Entrar</button>
       </form>
-      <p id="errorMessage" style="color: red; display: none;">
+      <p id="errorMessage" style="color: red; display: none">
         Usuário ou senha incorretos!
       </p>
     </div>
 
     <script>
-      document.getElementById('loginForm').addEventListener('submit', async (event) => {
-        event.preventDefault();
+      const socket = io('https://chamador-senha-server.onrender.com')
+      const loginForm = document.getElementById('loginForm')
+      const usernameInput = document.getElementById('username')
+      const passwordInput = document.getElementById('password')
+      const errorMessage = document.getElementById('errorMessage')
 
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
+      loginForm.addEventListener('submit', event => {
+        event.preventDefault()
 
-        const response = await fetch('https://seu-servidor.onrender.com/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, password }),
-          credentials: 'include'
-        });
+        const username = usernameInput.value
+        const password = passwordInput.value
 
-        if (response.ok) {
-          localStorage.setItem('loggedIn', 'true');
-          window.location.href = 'recepcao/recepcao.html';
+        socket.emit('validarLogin', { username, password })
+      })
+
+      socket.on('loginResult', isValid => {
+        if (isValid) {
+          window.location.href = '/admin.html' 
         } else {
-          document.getElementById('errorMessage').style.display = 'block';
+          errorMessage.style.display = 'block' 
         }
-      });
+      })
     </script>
   </body>
 </html>
