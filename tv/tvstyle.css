@@ -69,7 +69,8 @@ body {
 
 .preferencial {
   color: rgb(206, 206, 8);
-  border: 1px solid rgb(0, 0, 0);
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+    1px 1px 0 black;
 }
 
 .historico-container {
@@ -97,7 +98,6 @@ body {
 }
 
 @media (max-width: 840px) {
-
   #recep {
     font-size: 40px;
   }
@@ -109,7 +109,6 @@ body {
   #tipo {
     font-size: 20px;
   }
-
 }
 
 @media (max-width: 800px) {
@@ -136,7 +135,8 @@ body {
   }
 }
 
-@media (max-width: 460px) {}
+@media (max-width: 460px) {
+}
 
 @media (max-height: 620px) {
   .glass-container {
