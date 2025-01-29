@@ -39,6 +39,8 @@
 
         const username = usernameInput.value
         const password = passwordInput.value
+        console.log(username)
+        console.log(password)
 
         socket.emit('validarLogin', { username, password })
       })
