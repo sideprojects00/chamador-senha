@@ -117,12 +117,6 @@ body {
   }
 }
 
-@media (max-width: px) {
-}
-
-@media (max-width: px) {
-}
-
 @media (max-height: 620px) {
   .glass-container {
     padding: 25px;
