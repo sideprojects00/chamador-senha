@@ -68,7 +68,7 @@ body {
 }
 
 .preferencial {
-  color: rgb(34, 7, 238);
+  color: rgb(238, 238, 7);
   filter: drop-shadow(0.5px 0.5px 0 rgb(0, 0, 0)) drop-shadow(-0.5px -0.5px 0 rgb(0, 0, 0));
 }
 
