@@ -41,8 +41,6 @@
 
       socket.on('estadoAtualizado', ({ senhaAtual, tipoAtual }) => {
         const letraTipo = tipoAtual.charAt(0).toUpperCase()
-        numDiv.textContent = `${senhaAtual}${letraTipo}`
-        tipoDiv.textContent = tipoAtual
 
         numDiv.classList.remove('normal', 'preferencial')
         tipoDiv.classList.remove('normal', 'preferencial')
@@ -54,6 +52,9 @@
           numDiv.classList.add('preferencial')
           tipoDiv.classList.add('preferencial')
         }
+
+        numDiv.textContent = `${senhaAtual}${letraTipo}`
+        tipoDiv.textContent = tipoAtual
 
         tocarBipe()
       })

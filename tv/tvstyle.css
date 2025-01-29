@@ -46,14 +46,12 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
   flex-direction: column;
   gap: 20px;
-  color: #fff;
   text-align: center;
 }
 
 .glass-container .field {
   font-size: 18px;
   padding: 10px;
-  color: #000000;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -83,11 +81,11 @@ body {
 }
 
 .normal {
-  color: blue;
+  color: rgb(0, 162, 0);
 }
 
 .preferencial {
-  color: red;
+  color: rgb(255, 255, 0);
 }
 
 @media (max-width: 900px) {
