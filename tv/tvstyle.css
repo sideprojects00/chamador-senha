@@ -117,17 +117,19 @@ body {
   }
 
   .glass-container {
-    height: 80%;
+    height: 65%;
   }
 
   .historico-container {
-    height: 20%;
+    height: 15%;
     display: flex;
   }
 
   #historico-list {
     display: flex;
     gap: 4px;
+    justify-content: center;
+    align-items: center;
   }
 }
 
