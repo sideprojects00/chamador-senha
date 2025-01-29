@@ -96,9 +96,6 @@ body {
 }
 
 @media (max-width: 840px) {
-  .glass-container {
-    width: 65%;
-  }
 
   #recep {
     font-size: 40px;
@@ -112,8 +109,24 @@ body {
     font-size: 20px;
   }
 
+}
+
+@media (max-width: 800px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .glass-container {
+    height: 80%;
+  }
+
   .historico-container {
-    width: 8%;
+    height: 20%;
+  }
+
+  #historico-list {
+    display: flex;
+    gap: 4px;
   }
 }
 
