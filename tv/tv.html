@@ -26,7 +26,14 @@
         <div class="field" id="num"></div>
         <div class="field" id="tipo"></div>
       </div>
+
+      <div class="historico-container">
+        <h2>Últimas Senhas</h2>
+        <ul id="historico-list"></ul>
+      </div>
     </main>
+
+    
 
     <script>
       const socket = io('https://chamador-senha-server.onrender.com')
@@ -34,30 +41,44 @@
       const numDiv = document.getElementById('num')
       const tipoDiv = document.getElementById('tipo')
 
+      const historicoList = document.getElementById('historico-list')
+
       function tocarBipe() {
         const audio = new Audio('../assets/bip.mp3')
         audio.play()
       }
 
-      socket.on('estadoAtualizado', ({ senhaAtual, tipoAtual }) => {
-        const letraTipo = tipoAtual.charAt(0).toUpperCase()
+      socket.on(
+        'estadoAtualizado',
+        ({ senhaAtual, tipoAtual, historicoSenhas }) => {
+          const letraTipo = tipoAtual.charAt(0).toUpperCase()
 
-        numDiv.classList.remove('normal', 'preferencial')
-        tipoDiv.classList.remove('normal', 'preferencial')
+          numDiv.classList.remove('normal', 'preferencial')
+          tipoDiv.classList.remove('normal', 'preferencial')
 
-        if (tipoAtual === 'Normal') {
-          numDiv.classList.add('normal')
-          tipoDiv.classList.add('normal')
-        } else if (tipoAtual === 'Preferencial') {
-          numDiv.classList.add('preferencial')
-          tipoDiv.classList.add('preferencial')
+          if (tipoAtual === 'Normal') {
+            numDiv.classList.add('normal')
+            tipoDiv.classList.add('normal')
+          } else if (tipoAtual === 'Preferencial') {
+            numDiv.classList.add('preferencial')
+            tipoDiv.classList.add('preferencial')
+          }
+
+          numDiv.textContent = `${senhaAtual}${letraTipo}`
+          tipoDiv.textContent = tipoAtual
+
+          historicoList.innerHTML = ''
+
+          historicoSenhas.forEach(({ senha, tipo }) => {
+            const li = document.createElement('li')
+            li.textContent = `${senha}${tipo.charAt(0).toUpperCase()}`
+            li.classList.add(tipo.toLowerCase())
+            historicoList.appendChild(li)
+          })
+
+          tocarBipe()
         }
-
-        numDiv.textContent = `${senhaAtual}${letraTipo}`
-        tipoDiv.textContent = tipoAtual
-
-        tocarBipe()
-      })
+      )
 
       socket.on('connect', () => {
         console.log('Conectado ao servidor!')

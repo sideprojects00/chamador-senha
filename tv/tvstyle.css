@@ -28,6 +28,7 @@ body {
   justify-content: center;
   gap: 20px;
   height: 100vh;
+  width: 100vw;
 }
 
 .glass-container {
@@ -35,8 +36,8 @@ body {
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  width: 80vw;
-  height: 80vh;
+  width: 80%;
+  height: 100%;
   padding: 50px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.8);
@@ -85,6 +86,32 @@ body {
 
 .preferencial {
   color: rgb(255, 255, 0);
+}
+
+.historico-container {
+  height: 100%;
+  width: 20%;
+  margin-top: 20px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.historico-container h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#historico-list {
+  list-style: none;
+  padding: 0;
+}
+
+#historico-list li {
+  font-size: 18px;
+  padding: 5px;
 }
 
 @media (max-width: 900px) {
