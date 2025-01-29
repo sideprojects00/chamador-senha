@@ -17,7 +17,7 @@ body {
 }
 
 .text-area a {
-  color: #FFFFFF;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -48,34 +48,19 @@ body {
   text-align: center;
 }
 
-.glass-container .field {
-  font-size: 18px;
-  padding: 10px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  outline: none;
-}
-
-.glass-container .field:nth-child(2) {
-  font-size: 24px;
-  font-weight: bold;
-}
-
 #recep {
   font-size: 60px;
-  font-family: "Merriweather Sans";
+  font-family: 'Merriweather Sans';
 }
 
 #num {
   font-size: 150px;
-  font-family: "Merriweather Sans";
+  font-family: 'Merriweather Sans';
 }
 
 #tipo {
   font-size: 30px;
-  font-family: "Merriweather Sans";
+  font-family: 'Merriweather Sans';
 }
 
 .normal {
@@ -89,7 +74,6 @@ body {
 .historico-container {
   height: 80%;
   width: 10%;
-  margin-top: 20px;
   padding: 10px;
   border-radius: 16px;
   text-align: center;
@@ -111,9 +95,48 @@ body {
   padding: 5px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 840px) {
   .glass-container {
-    width: 600px;
+    width: 65%;
+  }
+
+  #recep {
+    font-size: 40px;
+  }
+
+  #num {
+    font-size: 120px;
+  }
+
+  #tipo {
+    font-size: 20px;
+  }
+
+  .historico-container {
+    width: 8%;
   }
 }
 
+@media (max-width: px) {
+}
+
+@media (max-width: px) {
+}
+
+@media (max-height: 620px) {
+  .glass-container {
+    padding: 25px;
+  }
+
+  #recep {
+    font-size: 36px;
+  }
+
+  #num {
+    font-size: 110px;
+  }
+
+  #tipo {
+    font-size: 18px;
+  }
+}
