@@ -50,6 +50,7 @@
           localStorage.setItem('authToken', result.token)
           window.location.href = 'recepcao/recepcao.html'
         } else {
+          console.log(result)
           errorMessage.style.display = 'block'
         }
       })
