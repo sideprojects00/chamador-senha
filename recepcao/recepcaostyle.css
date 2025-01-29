@@ -86,16 +86,12 @@ button {
   background-color: #303030;
 }
 
-#box1 {
-  color: rgb(255, 0, 0);
-}
-
-#box2 {
+.normal {
   color: rgb(0, 162, 0);
 }
 
-#box3 {
-  color: rgb(210, 210, 0);;
+.preferencial {
+  color: rgb(255, 255, 0);;
 }
 
 .display-num {

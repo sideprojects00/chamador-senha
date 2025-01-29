@@ -20,15 +20,6 @@
     <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
   </head>
   <body>
-    <header class="header">
-      <img class="image" src="../assets/logo.png" alt="" />
-      <div class="text-area">
-        <a href="../index.html">
-          <h1>Chamador de Senha</h1>
-        </a>
-      </div>
-    </header>
-
     <main class="main-content">
       <div class="glass-container">
         <div class="field" id="recep">Recepção</div>
@@ -52,6 +43,17 @@
         const letraTipo = tipoAtual.charAt(0).toUpperCase()
         numDiv.textContent = `${senhaAtual}${letraTipo}`
         tipoDiv.textContent = tipoAtual
+
+        numDiv.classList.remove('normal', 'preferencial')
+        tipoDiv.classList.remove('normal', 'preferencial')
+
+        if (tipoAtual === 'Normal') {
+          numDiv.classList.add('normal')
+          tipoDiv.classList.add('normal')
+        } else if (tipoAtual === 'Preferencial') {
+          numDiv.classList.add('preferencial')
+          tipoDiv.classList.add('preferencial')
+        }
 
         tocarBipe()
       })

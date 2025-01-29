@@ -30,18 +30,18 @@
     </header>
 
     <main class="main-content">
-      <div class="box" id="box1">
-        <h2>Senha atual</h2>
+      <div class="box">
+        <h2 id="current-tittle">Senha atual</h2>
         <div id="current-num" class="display-num">1</div>
         <div id="current-type">Normal</div>
         <button id="reset-btn">Reiniciar contadores</button>
       </div>
-      <div class="box" id="box2">
+      <div class="box normal">
         <h2>Próxima senha normal</h2>
         <div id="next-normal-num" class="display-num">2</div>
         <button id="next-normal-btn">Chamar próxima</button>
       </div>
-      <div class="box" id="box3">
+      <div class="box preferencial">
         <h2>Próxima senha preferencial</h2>
         <div id="next-preferential-num" class="display-num">2</div>
         <button id="next-preferential-btn">Chamar próxima</button>
@@ -51,6 +51,7 @@
     <script>
       const socket = io('https://chamador-senha-server.onrender.com')
 
+      const currentTittle = document.getElementById('current-tittle')
       const currentNumEl = document.getElementById('current-num')
       const currentTypeEl = document.getElementById('current-type')
       const nextNormalNumEl = document.getElementById('next-normal-num')
@@ -70,6 +71,20 @@
           currentTypeEl.textContent = tipoAtual
           nextNormalNumEl.textContent = filaNormal
           nextPreferentialNumEl.textContent = filaPreferencial
+
+          currentTittle.classList.remove('normal', 'preferencial')
+          currentNumEl.classList.remove('normal', 'preferencial')
+          currentTypeEl.classList.remove('normal', 'preferencial')
+
+          if (tipoAtual === 'Normal') {
+            currentTittle.classList.add('normal')
+            currentNumEl.classList.add('normal')
+            currentTypeEl.classList.add('normal')
+          } else if (tipoAtual === 'Preferencial') {
+            currentTittle.classList.add('preferencial')
+            currentNumEl.classList.add('preferencial')
+            currentTypeEl.classList.add('preferencial')
+          }
         }
       )
 
@@ -78,11 +93,11 @@
       })
 
       nextNormalBtn.addEventListener('click', () => {
-        socket.emit('chamarProximaNormal') 
+        socket.emit('chamarProximaNormal')
       })
 
       nextPreferentialBtn.addEventListener('click', () => {
-        socket.emit('chamarProximaPreferencial') 
+        socket.emit('chamarProximaPreferencial')
       })
 
       socket.on('connect', () => {
