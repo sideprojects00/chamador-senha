@@ -118,11 +118,13 @@ body {
 
   .glass-container {
     height: 65%;
+    width: 90%;
   }
 
   .historico-container {
     height: 15%;
     display: flex;
+    width: 90%;
   }
 
   #historico-list {
