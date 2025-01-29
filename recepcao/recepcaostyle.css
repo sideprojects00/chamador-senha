@@ -91,9 +91,8 @@ button {
 }
 
 .preferencial {
-  color: rgb(206, 206, 8);
-  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
-    1px 1px 0 black;
+  color: rgb(238, 238, 7);
+  filter: drop-shadow(2px 2px 0 black) drop-shadow(-2px -2px 0 black);
 }
 
 .display-num {
