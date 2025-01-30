@@ -96,6 +96,10 @@ button {
     drop-shadow(-0.5px -0.5px 0 rgb(0, 0, 0));
 }
 
+h2 {
+  font-family: 'Merriweather Sans';
+}
+
 .display-num {
   font-size: 100px;
   font-family: 'Merriweather Sans';
