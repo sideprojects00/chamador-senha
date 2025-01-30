@@ -42,22 +42,42 @@
       const historicoList = document.getElementById('historico-list')
 
       function speakDivContent() {
+        const numDiv = document.getElementById('num')
         if (!numDiv) {
-            console.error("Elemento com id 'num' não encontrado.");
-            return;
+          console.error("Elemento com id 'num' não encontrado.")
+          return
         }
-        
-        const text = numDiv.innerText.trim();
+
+        const text = numDiv.innerText.trim()
         if (!text) {
-            console.error("A div está vazia.");
-            return;
+          console.error('A div está vazia.')
+          return
         }
-        
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = "pt-BR"; 
-        window.speechSynthesis.speak(utterance);
-    }
-    
+
+        const utterance = new SpeechSynthesisUtterance(text)
+        utterance.lang = 'pt-BR'
+
+        function setVoice() {
+          const voices = window.speechSynthesis.getVoices()
+
+          utterance.voice = voices.find(
+            voice =>
+              voice.lang === 'pt-BR' &&
+              voice.name.includes('Google') &&
+              voice.name.includes('feminine')
+          )
+          if (!utterance.voice) {
+            console.error('Voz feminina não encontrada.')
+          }
+          window.speechSynthesis.speak(utterance)
+        }
+
+        if (window.speechSynthesis.onvoiceschanged !== undefined) {
+          window.speechSynthesis.onvoiceschanged = setVoice
+        } else {
+          setVoice()
+        }
+      }
 
       function tocarBipe() {
         const audio = new Audio('../assets/bip.mp3')
@@ -93,6 +113,7 @@
           })
 
           tocarBipe()
+          setTimeout(1000)
           speakDivContent()
         }
       )
