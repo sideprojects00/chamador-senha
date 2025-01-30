@@ -35,9 +35,10 @@
 
         socket.emit('login', { username, password })
 
-        socket.on('loginResponse', data => {
-          if (data.success) {
-            localStorage.setItem('token', data.token)
+        socket.on('loginResponse', ({ token }) => {
+          console.log("Token chegou em login: ", token)
+          if (token) {
+            localStorage.setItem('token', token)
             window.location.href = 'recepcao/recepcao.html'
           } else {
             errorMessage.style.display = 'block'
