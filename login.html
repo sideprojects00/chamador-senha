@@ -29,21 +29,29 @@
 
     <script>
       const socket = io('https://chamador-senha-server.onrender.com')
-      const loginForm = document.getElementById('loginForm')
       const usernameInput = document.getElementById('username')
       const passwordInput = document.getElementById('password')
       const errorMessage = document.getElementById('errorMessage')
 
-      loginForm.addEventListener('submit', event => {
-        event.preventDefault()
+      document
+        .getElementById('loginForm')
+        .addEventListener('submit', function (e) {
+          e.preventDefault()
 
-        const username = usernameInput.value.trim()
-        const password = passwordInput.value.trim()
-        console.log(username)
-        console.log(password)
+          const username = document.getElementById('username').value
+          const password = document.getElementById('password').value
 
-        socket.emit('validarLogin', { username, password })
-      })
+          socket.emit('validarLogin', { username, password })
+
+          socket.on('loginResult', data => {
+            if (data.success) {
+              localStorage.setItem('token', data.token) 
+              window.location.href = 'recepcao.html' 
+            } else {
+              document.getElementById('errorMessage').style.display = 'block'
+            }
+          })
+        })
 
       socket.on('loginResult', result => {
         console.log(result)

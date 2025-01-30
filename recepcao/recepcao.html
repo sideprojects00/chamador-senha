@@ -50,15 +50,19 @@
 
     <script>
 
-      const socket = io('https://chamador-senha-server.onrender.com')
+      const token = localStorage.getItem('token')
 
-      socket.on('checkLoginStatus', (logged) => {
+      const socket = io('https://chamador-senha-server.onrender.com', {
+        query: { token }
+      })
+
+      socket.on('checkLoginStatus', logged => {
         if (!logged) {
-          window.location.href = '/login.html'; 
+          window.location.href = '/login.html'
         }
-      });
+      })
 
-      socket.emit('checkLogin');
+      socket.emit('checkLogin')
 
       const currentTittle = document.getElementById('current-tittle')
       const currentNumEl = document.getElementById('current-num')
