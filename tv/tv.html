@@ -21,7 +21,7 @@
   </head>
   <body>
     <main class="main-content">
-      <div class="glass-container">
+      <div id="glass-container-id" class="glass-container">
         <div class="field" id="recep">Recepção</div>
         <div class="field" id="num"></div>
         <div class="field" id="tipo"></div>
@@ -38,6 +38,7 @@
 
       const numDiv = document.getElementById('num')
       const tipoDiv = document.getElementById('tipo')
+      const glassContainer = document.getElementById('glass-container-id')
 
       const historicoList = document.getElementById('historico-list')
 
@@ -57,15 +58,12 @@
         ({ senhaAtual, tipoAtual, historicoSenhas }) => {
           const letraTipo = tipoAtual.charAt(0).toUpperCase()
 
-          numDiv.classList.remove('normal', 'preferencial')
-          tipoDiv.classList.remove('normal', 'preferencial')
+          glassContainer.classList.remove('normal-bg', 'preferencial-bg')
 
           if (tipoAtual === 'Normal') {
-            numDiv.classList.add('normal')
-            tipoDiv.classList.add('normal')
+            glassContainer.classList.add('normal-bg')
           } else if (tipoAtual === 'Preferencial') {
-            numDiv.classList.add('preferencial')
-            tipoDiv.classList.add('preferencial')
+            glassContainer.classList.add('preferencial-bg')
           }
 
           numDiv.textContent = `${senhaAtual}${letraTipo}`
@@ -81,9 +79,11 @@
           })
 
           tocarBipe()
+
           setTimeout(function () {
             speakDivContent(senhaAtual)
           }, 1000)
+
           setTimeout(function () {
             speakDivContent(tipoAtual)
           }, 1200)
