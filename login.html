@@ -46,11 +46,11 @@
       })
 
       socket.on('loginResult', result => {
+        console.log(result)
         if (result.success) {
           localStorage.setItem('authToken', result.token)
           window.location.href = 'recepcao/recepcao.html'
         } else {
-          console.log(result)
           errorMessage.style.display = 'block'
         }
       })
