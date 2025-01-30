@@ -51,13 +51,14 @@
     <script>
 
       const token = localStorage.getItem('token')
+      console.log(token)
 
       const socket = io('https://chamador-senha-server.onrender.com', {
         query: { token }
       })
 
       socket.on('checkLoginStatus', logged => {
-        if (!logged) {
+        if (!token) {
           window.location.href = '/login.html'
         }
       })
