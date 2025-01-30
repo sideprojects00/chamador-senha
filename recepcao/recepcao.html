@@ -3,20 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="recepcaostyle.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,700;1,700&display=swap"
-      rel="stylesheet"
-    />
-
     <title>Chamador de Senha - Recepção</title>
+    <link rel="stylesheet" href="recepcaostyle.css" />
     <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
   </head>
   <body>
@@ -49,21 +37,21 @@
     </main>
 
     <script>
-
+      const socket = io('https://chamador-senha-server.onrender.com')
       const token = localStorage.getItem('token')
-      console.log(token)
 
-      const socket = io('https://chamador-senha-server.onrender.com', {
-        query: { token }
-      })
+      if (!token) {
+        window.location.href = 'login.html'
+      } else {
+        socket.emit('authenticate', { token })
 
-      socket.on('checkLoginStatus', logged => {
-        if (!token) {
-          window.location.href = '/login.html'
-        }
-      })
-
-      socket.emit('checkLogin')
+        socket.on('authResponse', data => {
+          if (!data.success) {
+            localStorage.removeItem('token')
+            window.location.href = 'login.html'
+          }
+        })
+      }
 
       const currentTittle = document.getElementById('current-tittle')
       const currentNumEl = document.getElementById('current-num')

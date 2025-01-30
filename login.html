@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
     <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
   </head>
   <body>
@@ -20,7 +16,7 @@
       <form id="loginForm">
         <input type="text" id="username" placeholder="Usuário" required />
         <input type="password" id="password" placeholder="Senha" required />
-        <button id="submit-btn">Entrar</button>
+        <button type="submit" id="submit-btn">Entrar</button>
       </form>
       <p id="errorMessage" style="color: red; display: none">
         Usuário ou senha incorretos!
@@ -29,38 +25,24 @@
 
     <script>
       const socket = io('https://chamador-senha-server.onrender.com')
-      const usernameInput = document.getElementById('username')
-      const passwordInput = document.getElementById('password')
+      const loginForm = document.getElementById('loginForm')
       const errorMessage = document.getElementById('errorMessage')
 
-      document
-        .getElementById('loginForm')
-        .addEventListener('click', function (e) {
-          e.preventDefault()
+      loginForm.addEventListener('submit', event => {
+        event.preventDefault()
+        const username = document.getElementById('username').value
+        const password = document.getElementById('password').value
 
-          const username = document.getElementById('username').value
-          const password = document.getElementById('password').value
+        socket.emit('login', { username, password })
 
-          socket.emit('validarLogin', { username, password })
-
-          socket.on('loginResult', data => {
-            if (data.success) {
-              localStorage.setItem('token', data.token) 
-              window.location.href = 'recepcao.html' 
-            } else {
-              document.getElementById('errorMessage').style.display = 'block'
-            }
-          })
+        socket.on('loginResponse', data => {
+          if (data.success) {
+            localStorage.setItem('token', data.token)
+            window.location.href = 'recepcao.html'
+          } else {
+            errorMessage.style.display = 'block'
+          }
         })
-
-      socket.on('loginResult', result => {
-        console.log(result)
-        if (result.success) {
-          localStorage.setItem('authToken', result.token)
-          window.location.href = 'recepcao/recepcao.html'
-        } else {
-          errorMessage.style.display = 'block'
-        }
       })
     </script>
   </body>
