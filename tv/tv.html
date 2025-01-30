@@ -41,19 +41,8 @@
 
       const historicoList = document.getElementById('historico-list')
 
-      function speakDivContent() {
-        if (!numDiv) {
-          console.error("Elemento com id 'num' não encontrado.")
-          return
-        }
-
-        const text = numDiv.innerText.trim()
-        if (!text) {
-          console.error('A div está vazia.')
-          return
-        }
-
-        const utterance = new SpeechSynthesisUtterance(text)
+      function speakDivContent(content) {
+        const utterance = new SpeechSynthesisUtterance(content)
         utterance.lang = 'pt-BR'
         window.speechSynthesis.speak(utterance)
       }
@@ -93,8 +82,11 @@
 
           tocarBipe()
           setTimeout(function () {
-            speakDivContent()
+            speakDivContent(senhaAtual)
           }, 1000)
+          setTimeout(function () {
+            speakDivContent(tipoAtual)
+          }, 1200)
         }
       )
 
