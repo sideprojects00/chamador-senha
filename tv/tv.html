@@ -90,6 +90,18 @@
         }
       )
 
+      socket.on('rechamarSenha', () => {
+        tocarBipe()
+
+        setTimeout(function () {
+          speakDivContent(senhaAtual)
+        }, 1000)
+
+        setTimeout(function () {
+          speakDivContent(tipoAtual)
+        }, 1200)
+      })
+
       socket.on('connect', () => {
         console.log('Conectado ao servidor!')
       })

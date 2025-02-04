@@ -33,6 +33,7 @@
         <h2 id="current-tittle">Senha atual</h2>
         <div id="current-num" class="display-num">1</div>
         <div id="current-type">Preferencial</div>
+        <button id="rechamar-senha-btn">Rechamar Senha</button>
         <button id="reset-btn">Reiniciar contadores</button>
       </div>
       <div class="box normal">
@@ -76,6 +77,7 @@
       const nextPreferentialBtn = document.getElementById(
         'next-preferential-btn'
       )
+      const rechamarSenhaBtn = document.getElementById('rechamar-senha-btn')
 
       socket.on(
         'estadoAtualizado',
@@ -111,6 +113,10 @@
 
       nextPreferentialBtn.addEventListener('click', () => {
         socket.emit('chamarProximaPreferencial')
+      })
+
+      rechamarSenhaBtn.addEventListener('click', () => {
+        socket.emit('rechamarSenha')
       })
 
       socket.on('connect', () => {
