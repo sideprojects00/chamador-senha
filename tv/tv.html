@@ -42,12 +42,6 @@
 
       const historicoList = document.getElementById('historico-list')
 
-      function speakDivContent(content) {
-        const utterance = new SpeechSynthesisUtterance(content)
-        utterance.lang = 'pt-BR'
-        window.speechSynthesis.speak(utterance)
-      }
-
       function tocarBipe() {
         const audio = new Audio('../assets/bip.mp3')
         audio.play()
@@ -79,27 +73,11 @@
           })
 
           tocarBipe()
-
-          setTimeout(function () {
-            speakDivContent(senhaAtual)
-          }, 1000)
-
-          setTimeout(function () {
-            speakDivContent(tipoAtual)
-          }, 1200)
         }
       )
 
       socket.on('rechamarSenha', () => {
         tocarBipe()
-
-        setTimeout(function () {
-          speakDivContent(senhaAtual)
-        }, 1000)
-
-        setTimeout(function () {
-          speakDivContent(tipoAtual)
-        }, 1200)
       })
 
       socket.on('connect', () => {
