@@ -121,6 +121,9 @@ h2 {
   padding: 10px;
   border-radius: 16px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .historico-container h2 {
@@ -130,6 +133,11 @@ h2 {
 }
 
 #historico-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
   list-style: none;
   padding: 0;
 }
