@@ -52,12 +52,12 @@
         ({ senhaAtual, tipoAtual, historicoSenhas }) => {
           const letraTipo = tipoAtual.charAt(0).toUpperCase()
 
-          glassContainer.classList.remove('normal-bg', 'preferencial-bg')
+          glassContainer.classList.remove('normal', 'preferencial')
 
           if (tipoAtual === 'Normal') {
-            glassContainer.classList.add('normal-bg')
+            glassContainer.classList.add('normal')
           } else if (tipoAtual === 'Preferencial') {
-            glassContainer.classList.add('preferencial-bg')
+            glassContainer.classList.add('preferencial')
           }
 
           numDiv.textContent = `${senhaAtual}${letraTipo}`
