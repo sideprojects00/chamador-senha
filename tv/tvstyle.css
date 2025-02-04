@@ -95,6 +95,8 @@ body {
   padding: 5px;
   text-decoration: none;
   outline: none;
+  margin-bottom: 4px;
+  width: 68px;
 }
 
 @media (max-width: 840px) {
