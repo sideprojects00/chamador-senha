@@ -123,6 +123,10 @@
         console.log('Conectado ao servidor!')
       })
 
+      setTimeout(() => {
+        socket.emit('keepAlive')
+      }, 1000)
+
       socket.on('disconnect', () => {
         console.log('Desconectado do servidor!')
       })
