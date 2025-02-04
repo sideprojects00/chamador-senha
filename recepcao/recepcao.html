@@ -29,6 +29,10 @@
     </header>
 
     <main class="main-content">
+      <div class="historico-container">
+        <h2>Últimas Senhas:</h2>
+        <ul id="historico-list"></ul>
+      </div>
       <div class="box">
         <h2 id="current-tittle">Senha atual</h2>
         <div id="current-num" class="display-num">1</div>
@@ -81,7 +85,13 @@
 
       socket.on(
         'estadoAtualizado',
-        ({ senhaAtual, tipoAtual, filaNormal, filaPreferencial }) => {
+        ({
+          senhaAtual,
+          tipoAtual,
+          filaNormal,
+          filaPreferencial,
+          historicoSenhas
+        }) => {
           currentNumEl.textContent = senhaAtual
           currentTypeEl.textContent = tipoAtual
           nextNormalNumEl.textContent = filaNormal
@@ -100,6 +110,15 @@
             currentNumEl.classList.add('preferencial')
             currentTypeEl.classList.add('preferencial')
           }
+
+          historicoList.innerHTML = ''
+
+          historicoSenhas.forEach(({ senha, tipo }) => {
+            const li = document.createElement('li')
+            li.textContent = `${senha}${tipo.charAt(0).toUpperCase()}`
+            li.classList.add(tipo.toLowerCase())
+            historicoList.appendChild(li)
+          })
         }
       )
 
