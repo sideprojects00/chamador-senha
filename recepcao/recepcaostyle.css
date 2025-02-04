@@ -111,6 +111,32 @@ h2 {
   font-family: 'Merriweather Sans';
 }
 
+.historico-container {
+  height: 20%;
+  width: 80%;
+  padding: 10px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.historico-container h2 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#historico-list {
+  list-style: none;
+  padding: 0;
+}
+
+#historico-list li {
+  font-size: 24px;
+  padding: 5px;
+  text-decoration: none;
+  outline: none;
+}
+
 @media (max-width: 1301px) {
   .main-content {
     margin-top: 60px;
