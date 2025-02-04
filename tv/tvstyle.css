@@ -97,6 +97,7 @@ body {
   outline: none;
   margin-bottom: 4px;
   width: 68px;
+  border-radius: 4px;
 }
 
 @media (max-width: 840px) {
